@@ -28,6 +28,31 @@ const STATS = [
   { num: "6", label: "Eras" },
 ];
 
+const QUICK_ERAS = [
+  { label: "Guardia Vieja", id: "guardia-vieja", years: "1880–1920" },
+  { label: "Guardia Nueva", id: "guardia-nueva", years: "1920–1935" },
+  { label: "Época de Oro", id: "epoca-de-oro", years: "1935–1955" },
+  { label: "Decadencia", id: "decadencia", years: "1955–1983" },
+  { label: "Renacimiento", id: "renacimiento", years: "1983–present" },
+];
+
+const KEY_EVENTS = [
+  { label: "Tango Argentino (1983)", id: "tango-argentino-1983", desc: "Broadway show that sparked global revival" },
+  { label: "Gardel's Death (1935)", id: "gardel-death", desc: "End of an era" },
+  { label: "UNESCO Recognition (2009)", id: "unesco-2009", desc: "Intangible Cultural Heritage" },
+  { label: "First Recording (1917)", id: "first-recording", desc: "Mi Noche Triste" },
+  { label: "Tango Lesson Film (1997)", id: "tango-lesson", desc: "Sally Potter's exploration" },
+];
+
+const TOPICS = [
+  { label: "The Bandoneón", id: "bandoneon", icon: "🪗", desc: "The soul of tango's sound" },
+  { label: "Women in Tango", id: "women-in-tango", icon: "👠", desc: "From forbidden to featured" },
+  { label: "Tango & Technology", id: "tango-technology", icon: "💿", desc: "Recording, radio, and revival" },
+  { label: "The Lyrics & Poetry", id: "lyrics-poetry", icon: "✒️", desc: "Lunfardo and longing" },
+  { label: "Milonga Culture", id: "milonga-culture", icon: "🌙", desc: "Codes, cabeceo, and community" },
+  { label: "Tango Fashion", id: "tango-fashion", icon: "👔", desc: "From compadrito to modern" },
+];
+
 const QUOTES = [
   { text: "Tango is a sad thought that is danced.", author: "Enrique Santos Discépolo" },
   { text: "The tango is the direct expression of something that poets have often tried to state in words: the belief that a fight may be a celebration.", author: "Jorge Luis Borges" },
@@ -138,6 +163,109 @@ function Header({ scrolled, onMenuToggle, menuOpen }) {
         </div>
       )}
     </header>
+  );
+}
+
+function QuickAccessTabs() {
+  const [activeTab, setActiveTab] = useState("eras");
+
+  const tabs = [
+    { id: "eras", label: "By Era" },
+    { id: "events", label: "Key Events" },
+    { id: "topics", label: "Topics" },
+  ];
+
+  return (
+    <div className="mt-10 sm:mt-12 w-full max-w-2xl mx-auto">
+      {/* Tab buttons */}
+      <div className="flex justify-center gap-1 mb-4">
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className="px-4 py-1.5 rounded-full text-sm transition-all duration-200"
+            style={{
+              fontFamily: "'Source Sans 3', sans-serif",
+              backgroundColor: activeTab === tab.id ? "rgba(200,169,110,0.15)" : "transparent",
+              color: activeTab === tab.id ? "#C8A96E" : "#6B6560",
+              border: activeTab === tab.id ? "1px solid rgba(200,169,110,0.3)" : "1px solid transparent",
+            }}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Tab content */}
+      <div className="flex flex-wrap justify-center gap-2">
+        {activeTab === "eras" && QUICK_ERAS.map((era) => (
+          <a
+            key={era.id}
+            href={`#${era.id}`}
+            className="group no-underline px-3 py-1.5 rounded-lg transition-all duration-200"
+            style={{ backgroundColor: "rgba(30,27,24,0.6)", border: "1px solid rgba(200,169,110,0.1)" }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "rgba(200,169,110,0.1)";
+              e.currentTarget.style.borderColor = "rgba(200,169,110,0.3)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "rgba(30,27,24,0.6)";
+              e.currentTarget.style.borderColor = "rgba(200,169,110,0.1)";
+            }}
+          >
+            <span style={{ fontFamily: "'Source Sans 3', sans-serif", color: "#F5F0E8", fontSize: "0.85rem", fontWeight: 500 }}>
+              {era.label}
+            </span>
+            <span style={{ fontFamily: "'JetBrains Mono', monospace", color: "#6B6560", fontSize: "0.7rem", marginLeft: "0.5rem" }}>
+              {era.years}
+            </span>
+          </a>
+        ))}
+
+        {activeTab === "events" && KEY_EVENTS.map((event) => (
+          <a
+            key={event.id}
+            href={`#${event.id}`}
+            className="group no-underline px-3 py-1.5 rounded-lg transition-all duration-200"
+            style={{ backgroundColor: "rgba(30,27,24,0.6)", border: "1px solid rgba(139,46,59,0.15)" }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "rgba(139,46,59,0.1)";
+              e.currentTarget.style.borderColor = "rgba(139,46,59,0.4)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "rgba(30,27,24,0.6)";
+              e.currentTarget.style.borderColor = "rgba(139,46,59,0.15)";
+            }}
+          >
+            <span style={{ fontFamily: "'Source Sans 3', sans-serif", color: "#F5F0E8", fontSize: "0.85rem", fontWeight: 500 }}>
+              {event.label}
+            </span>
+          </a>
+        ))}
+
+        {activeTab === "topics" && TOPICS.map((topic) => (
+          <a
+            key={topic.id}
+            href={`#${topic.id}`}
+            className="group no-underline px-3 py-1.5 rounded-lg transition-all duration-200 flex items-center gap-1.5"
+            style={{ backgroundColor: "rgba(30,27,24,0.6)", border: "1px solid rgba(74,144,184,0.15)" }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "rgba(74,144,184,0.1)";
+              e.currentTarget.style.borderColor = "rgba(74,144,184,0.4)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "rgba(30,27,24,0.6)";
+              e.currentTarget.style.borderColor = "rgba(74,144,184,0.15)";
+            }}
+          >
+            <span style={{ fontSize: "0.9rem" }}>{topic.icon}</span>
+            <span style={{ fontFamily: "'Source Sans 3', sans-serif", color: "#F5F0E8", fontSize: "0.85rem", fontWeight: 500 }}>
+              {topic.label}
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -269,6 +397,9 @@ function Hero({ searchFocused, setSearchFocused }) {
             — {currentQuote.author}
           </p>
         </div>
+
+        {/* Quick Access Tabs */}
+        <QuickAccessTabs />
       </div>
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce" style={{ opacity: 0.3 }}>
