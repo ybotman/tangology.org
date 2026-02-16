@@ -1,0 +1,100 @@
+{
+  "queue": [
+    {
+      "slug": "carlos-gardel",
+      "displayName": "Carlos Gardel",
+      "type": "singer",
+      "status": "pending",
+      "priority": 1,
+      "notes": "The voice of tango, international icon, died 1935",
+      "addedDate": "2026-02-16"
+    },
+    {
+      "slug": "anibal-troilo",
+      "displayName": "Aníbal Troilo",
+      "type": "musician",
+      "status": "pending",
+      "priority": 2,
+      "notes": "Pichuco, supreme bandoneón master, orchestra leader",
+      "addedDate": "2026-02-16"
+    },
+    {
+      "slug": "juan-darienzo",
+      "displayName": "Juan D'Arienzo",
+      "type": "musician",
+      "status": "pending",
+      "priority": 3,
+      "notes": "El Rey del Compás, brought dancers back to tango",
+      "addedDate": "2026-02-16"
+    },
+    {
+      "slug": "carlos-di-sarli",
+      "displayName": "Carlos Di Sarli",
+      "type": "musician",
+      "status": "pending",
+      "priority": 4,
+      "notes": "El Señor del Tango, elegant piano-driven style",
+      "addedDate": "2026-02-16"
+    },
+    {
+      "slug": "osvaldo-pugliese",
+      "displayName": "Osvaldo Pugliese",
+      "type": "musician",
+      "status": "pending",
+      "priority": 5,
+      "notes": "Dramatic orchestral innovator, La Yumba",
+      "addedDate": "2026-02-16"
+    },
+    {
+      "slug": "astor-piazzolla",
+      "displayName": "Astor Piazzolla",
+      "type": "composer",
+      "status": "pending",
+      "priority": 6,
+      "notes": "Nuevo tango revolutionary, controversial genius",
+      "addedDate": "2026-02-16"
+    },
+    {
+      "slug": "tete-rusconi",
+      "displayName": "Pedro 'Tete' Rusconi",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 7,
+      "notes": "Guardian generation milonguero, taught at Sin Rumbo",
+      "addedDate": "2026-02-16"
+    },
+    {
+      "slug": "carlos-gavito",
+      "displayName": "Carlos Gavito",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 8,
+      "notes": "Show tango master, Tango Argentino star, milonguero soul",
+      "addedDate": "2026-02-16"
+    },
+    {
+      "slug": "gustavo-naveira",
+      "displayName": "Gustavo Naveira",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 9,
+      "notes": "Nuevo tango co-creator, analytical approach, Giselle Anne partner",
+      "addedDate": "2026-02-16"
+    },
+    {
+      "slug": "chicho-frumboli",
+      "displayName": "Mariano 'Chicho' Frúmboli",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 10,
+      "notes": "Nuevo innovator, contemporary master, Juana Sepúlveda partner",
+      "addedDate": "2026-02-16"
+    }
+  ],
+  "stats": {
+    "total": 10,
+    "pending": 10,
+    "in_progress": 0,
+    "completed": 0
+  }
+}

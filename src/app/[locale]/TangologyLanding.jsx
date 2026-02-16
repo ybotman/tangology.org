@@ -82,6 +82,83 @@ function useInView(threshold = 0.15) {
   return [ref, isVisible];
 }
 
+function LanguageSwitcher() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Get current locale from URL
+  const currentLocale = typeof window !== 'undefined' ? (window.location.pathname.startsWith('/es') ? 'es' : 'en') : 'en';
+  const otherLocale = currentLocale === 'en' ? 'es' : 'en';
+  const currentPath = typeof window !== 'undefined' ? window.location.pathname.replace(/^\/(en|es)/, '') || '/' : '/';
+
+  const switchLocale = (locale) => {
+    const newPath = locale === 'en' ? currentPath : `/${locale}${currentPath}`;
+    window.location.href = newPath;
+  };
+
+  return (
+    <div className="relative ml-3">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center gap-1 px-2 py-1 rounded transition-colors duration-200"
+        style={{
+          fontFamily: "'Source Sans 3', sans-serif",
+          color: "#A89F94",
+          fontSize: "0.8rem",
+          fontWeight: 500,
+          border: "1px solid rgba(200,169,110,0.15)",
+          backgroundColor: isOpen ? "rgba(200,169,110,0.1)" : "transparent",
+        }}
+        onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(200,169,110,0.4)"; }}
+        onMouseLeave={(e) => { if (!isOpen) e.currentTarget.style.borderColor = "rgba(200,169,110,0.15)"; }}
+      >
+        <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        {currentLocale.toUpperCase()}
+        <svg width="10" height="10" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.2s" }}>
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+
+      {isOpen && (
+        <div
+          className="absolute right-0 mt-1 py-1 rounded shadow-lg"
+          style={{ backgroundColor: "#1E1B18", border: "1px solid rgba(200,169,110,0.2)", minWidth: "80px" }}
+        >
+          <button
+            onClick={() => switchLocale('en')}
+            className="w-full px-3 py-1.5 text-left transition-colors duration-200"
+            style={{
+              fontFamily: "'Source Sans 3', sans-serif",
+              fontSize: "0.8rem",
+              color: currentLocale === 'en' ? "#C8A96E" : "#A89F94",
+              backgroundColor: currentLocale === 'en' ? "rgba(200,169,110,0.1)" : "transparent",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "rgba(200,169,110,0.15)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = currentLocale === 'en' ? "rgba(200,169,110,0.1)" : "transparent"; }}
+          >
+            English
+          </button>
+          <button
+            onClick={() => switchLocale('es')}
+            className="w-full px-3 py-1.5 text-left transition-colors duration-200"
+            style={{
+              fontFamily: "'Source Sans 3', sans-serif",
+              fontSize: "0.8rem",
+              color: currentLocale === 'es' ? "#C8A96E" : "#A89F94",
+              backgroundColor: currentLocale === 'es' ? "rgba(200,169,110,0.1)" : "transparent",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "rgba(200,169,110,0.15)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = currentLocale === 'es' ? "rgba(200,169,110,0.1)" : "transparent"; }}
+          >
+            Español
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function GrainOverlay() {
   return (
     <div
@@ -136,6 +213,8 @@ function Header({ scrolled, onMenuToggle, menuOpen }) {
               <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
           </button>
+          {/* Language Switcher */}
+          <LanguageSwitcher />
         </nav>
 
         <button
