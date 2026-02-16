@@ -9,12 +9,12 @@ const ERAS = [
 ];
 
 const NAV_CARDS = [
-  { icon: "📅", title: "Timeline", desc: "140 years from the conventillos to the world stage", count: "5 eras", href: "#" },
-  { icon: "📖", title: "Glossary", desc: "Terms, concepts, and culture of the milonga", count: "87 terms", href: "#" },
-  { icon: "🎵", title: "Orchestras", desc: "The Big Four, and the ensembles that built the Golden Age", count: "23 profiles", href: "#" },
-  { icon: "👤", title: "People", desc: "Dancers, singers, musicians, and cultural figures", count: "89 profiles", href: "#" },
-  { icon: "📍", title: "Venues", desc: "Buenos Aires milongas, historic and living", count: "16 venues", href: "#" },
-  { icon: "💃", title: "Styles", desc: "From milonguero to nuevo — how the dance evolved", count: "9 styles", href: "#" },
+  { title: "Timeline", desc: "140 years from the conventillos to the world stage", count: "5 eras", href: "#" },
+  { title: "Glossary", desc: "Terms, concepts, and culture of the milonga", count: "87 terms", href: "#" },
+  { title: "Orchestras", desc: "The Big Four, and the ensembles that built the Golden Age", count: "23 profiles", href: "#" },
+  { title: "People", desc: "Dancers, singers, musicians, and cultural figures", count: "89 profiles", href: "#" },
+  { title: "Venues", desc: "Buenos Aires milongas, historic and living", count: "16 venues", href: "#" },
+  { title: "Styles", desc: "From milonguero to nuevo — how the dance evolved", count: "9 styles", href: "#" },
 ];
 
 const NAV_LINKS = ["Timeline", "Glossary", "Orchestras", "People", "Styles", "Venues"];
@@ -45,12 +45,12 @@ const KEY_EVENTS = [
 ];
 
 const TOPICS = [
-  { label: "The Bandoneón", id: "bandoneon", icon: "🪗", desc: "The soul of tango's sound" },
-  { label: "Women in Tango", id: "women-in-tango", icon: "👠", desc: "From forbidden to featured" },
-  { label: "Tango & Technology", id: "tango-technology", icon: "💿", desc: "Recording, radio, and revival" },
-  { label: "The Lyrics & Poetry", id: "lyrics-poetry", icon: "✒️", desc: "Lunfardo and longing" },
-  { label: "Milonga Culture", id: "milonga-culture", icon: "🌙", desc: "Codes, cabeceo, and community" },
-  { label: "Tango Fashion", id: "tango-fashion", icon: "👔", desc: "From compadrito to modern" },
+  { label: "The Bandoneón", id: "bandoneon", desc: "The soul of tango's sound" },
+  { label: "Women in Tango", id: "women-in-tango", desc: "From forbidden to featured" },
+  { label: "Tango & Technology", id: "tango-technology", desc: "Recording, radio, and revival" },
+  { label: "The Lyrics & Poetry", id: "lyrics-poetry", desc: "Lunfardo and longing" },
+  { label: "Milonga Culture", id: "milonga-culture", desc: "Codes, cabeceo, and community" },
+  { label: "Tango Fashion", id: "tango-fashion", desc: "From compadrito to modern" },
 ];
 
 const QUOTES = [
@@ -247,7 +247,7 @@ function QuickAccessTabs() {
           <a
             key={topic.id}
             href={`#${topic.id}`}
-            className="group no-underline px-3 py-1.5 rounded-lg transition-all duration-200 flex items-center gap-1.5"
+            className="group no-underline px-3 py-1.5 rounded-lg transition-all duration-200"
             style={{ backgroundColor: "rgba(30,27,24,0.6)", border: "1px solid rgba(74,144,184,0.15)" }}
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor = "rgba(74,144,184,0.1)";
@@ -258,7 +258,6 @@ function QuickAccessTabs() {
               e.currentTarget.style.borderColor = "rgba(74,144,184,0.15)";
             }}
           >
-            <span style={{ fontSize: "0.9rem" }}>{topic.icon}</span>
             <span style={{ fontFamily: "'Source Sans 3', sans-serif", color: "#F5F0E8", fontSize: "0.85rem", fontWeight: 500 }}>
               {topic.label}
             </span>
@@ -398,8 +397,6 @@ function Hero({ searchFocused, setSearchFocused }) {
           </p>
         </div>
 
-        {/* Quick Access Tabs */}
-        <QuickAccessTabs />
       </div>
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce" style={{ opacity: 0.3 }}>
@@ -434,17 +431,13 @@ function NavCard({ card, index, isVisible }) {
       onMouseLeave={() => setHovered(false)}
     >
       <div className="flex items-start justify-between mb-2">
-        <span className="text-xl">{card.icon}</span>
+        <h3 style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#F5F0E8", fontSize: "1.2rem", fontWeight: 700 }}>
+          {card.title}
+        </h3>
         <span style={{ fontFamily: "'Source Sans 3', sans-serif", color: "#C8A96E", fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.05em" }}>
           {card.count}
         </span>
       </div>
-      <h3
-        className="mb-1.5"
-        style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#F5F0E8", fontSize: "1.2rem", fontWeight: 700 }}
-      >
-        {card.title}
-      </h3>
       <p style={{ fontFamily: "'Source Sans 3', sans-serif", color: "#A89F94", fontSize: "0.88rem", lineHeight: 1.5, fontWeight: 400 }}>
         {card.desc}
       </p>
@@ -463,10 +456,15 @@ function NavGrid() {
         >
           Explore
         </h2>
-        <p className="text-center mb-10" style={{ fontFamily: "'Source Sans 3', sans-serif", color: "#6B6560", fontSize: "0.9rem" }}>
+        <p className="text-center mb-6" style={{ fontFamily: "'Source Sans 3', sans-serif", color: "#6B6560", fontSize: "0.9rem" }}>
           Dive into the world of Argentine tango
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        {/* Quick Access Tabs - By Era, Key Events, Topics */}
+        <QuickAccessTabs />
+
+        {/* Category Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
           {NAV_CARDS.map((card, i) => (
             <NavCard key={card.title} card={card} index={i} isVisible={isVisible} />
           ))}

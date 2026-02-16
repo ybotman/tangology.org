@@ -1,0 +1,99 @@
+{
+  "site": {
+    "name": "TANGOLOGY",
+    "tagline": "The Study of Argentine Tango",
+    "pillars": "HISTORY · MUSIC · PEOPLE · CULTURE"
+  },
+  "nav": {
+    "timeline": "Timeline",
+    "glossary": "Glossary",
+    "orchestras": "Orchestras",
+    "people": "People",
+    "styles": "Styles",
+    "venues": "Venues",
+    "about": "About",
+    "contribute": "Contribute",
+    "back": "Back"
+  },
+  "search": {
+    "placeholder": "Search {count} entries — orchestras, terms, people, venues..."
+  },
+  "hero": {
+    "byEra": "By Era",
+    "keyEvents": "Key Events",
+    "topics": "Topics"
+  },
+  "eras": {
+    "guardiaVieja": "Guardia Vieja",
+    "guardiaNueva": "Guardia Nueva",
+    "epocaDeOro": "Época de Oro",
+    "decadencia": "Decadencia",
+    "renacimiento": "Renacimiento"
+  },
+  "events": {
+    "tangoArgentino": "Tango Argentino (1983)",
+    "gardelDeath": "Gardel's Death (1935)",
+    "unesco": "UNESCO Recognition (2009)",
+    "firstRecording": "First Recording (1917)",
+    "tangoLesson": "Tango Lesson Film (1997)"
+  },
+  "topics": {
+    "bandoneon": "The Bandoneón",
+    "bandoneonDesc": "The soul of tango's sound",
+    "women": "Women in Tango",
+    "womenDesc": "From forbidden to featured",
+    "technology": "Tango & Technology",
+    "technologyDesc": "Recording, radio, and revival",
+    "lyrics": "The Lyrics & Poetry",
+    "lyricsDesc": "Lunfardo and longing",
+    "milonga": "Milonga Culture",
+    "milongaDesc": "Codes, cabeceo, and community",
+    "fashion": "Tango Fashion",
+    "fashionDesc": "From compadrito to modern"
+  },
+  "sections": {
+    "explore": "Explore",
+    "exploreSubtitle": "Dive into the world of Argentine tango",
+    "spotlight": "Spotlight",
+    "timeline": "The Timeline",
+    "exploreTimeline": "Explore full timeline"
+  },
+  "cards": {
+    "timelineDesc": "140 years from the conventillos to the world stage",
+    "glossaryDesc": "Terms, concepts, and culture of the milonga",
+    "orchestrasDesc": "The Big Four, and the ensembles that built the Golden Age",
+    "peopleDesc": "Dancers, singers, musicians, and cultural figures",
+    "venuesDesc": "Buenos Aires milongas, historic and living",
+    "stylesDesc": "From milonguero to nuevo — how the dance evolved"
+  },
+  "stats": {
+    "terms": "Terms",
+    "orchestras": "Orchestras",
+    "people": "People",
+    "venues": "Venues",
+    "styles": "Styles",
+    "eras": "Eras",
+    "communityVerified": "COMMUNITY-VERIFIED KNOWLEDGE"
+  },
+  "footer": {
+    "description": "The open study of Argentine tango — history, music, people, culture",
+    "foundedBy": "Founded by",
+    "aiAssisted": "AI-assisted research · Human-curated",
+    "learnProcess": "Learn how we build content",
+    "copyright": "© 2026 Tangology.org"
+  },
+  "about": {
+    "title": "About Tangology",
+    "subtitle": "A community-driven knowledge base for Argentine tango",
+    "mission": "Our Mission",
+    "founder": "The Founder",
+    "howWeBuild": "How We Build Content",
+    "whyAI": "Why AI-Assisted?",
+    "foundError": "Found an Error? Know More?",
+    "getInTouch": "Get in Touch"
+  },
+  "language": {
+    "en": "English",
+    "es": "Español"
+  }
+}

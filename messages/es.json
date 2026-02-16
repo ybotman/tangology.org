@@ -1,0 +1,99 @@
+{
+  "site": {
+    "name": "TANGOLOGY",
+    "tagline": "El Estudio del Tango Argentino",
+    "pillars": "HISTORIA · MÚSICA · PERSONAS · CULTURA"
+  },
+  "nav": {
+    "timeline": "Cronología",
+    "glossary": "Glosario",
+    "orchestras": "Orquestas",
+    "people": "Personas",
+    "styles": "Estilos",
+    "venues": "Milongas",
+    "about": "Acerca de",
+    "contribute": "Contribuir",
+    "back": "Volver"
+  },
+  "search": {
+    "placeholder": "Buscar {count} entradas — orquestas, términos, personas, milongas..."
+  },
+  "hero": {
+    "byEra": "Por Época",
+    "keyEvents": "Eventos Clave",
+    "topics": "Temas"
+  },
+  "eras": {
+    "guardiaVieja": "Guardia Vieja",
+    "guardiaNueva": "Guardia Nueva",
+    "epocaDeOro": "Época de Oro",
+    "decadencia": "Decadencia",
+    "renacimiento": "Renacimiento"
+  },
+  "events": {
+    "tangoArgentino": "Tango Argentino (1983)",
+    "gardelDeath": "Muerte de Gardel (1935)",
+    "unesco": "Reconocimiento UNESCO (2009)",
+    "firstRecording": "Primera Grabación (1917)",
+    "tangoLesson": "Película Tango Lesson (1997)"
+  },
+  "topics": {
+    "bandoneon": "El Bandoneón",
+    "bandoneonDesc": "El alma del sonido tanguero",
+    "women": "Mujeres en el Tango",
+    "womenDesc": "De prohibido a protagonista",
+    "technology": "Tango y Tecnología",
+    "technologyDesc": "Grabación, radio y renacimiento",
+    "lyrics": "Letras y Poesía",
+    "lyricsDesc": "Lunfardo y añoranza",
+    "milonga": "Cultura Milonguera",
+    "milongaDesc": "Códigos, cabeceo y comunidad",
+    "fashion": "Moda Tanguera",
+    "fashionDesc": "Del compadrito a lo moderno"
+  },
+  "sections": {
+    "explore": "Explorar",
+    "exploreSubtitle": "Sumérgete en el mundo del tango argentino",
+    "spotlight": "Destacado",
+    "timeline": "La Cronología",
+    "exploreTimeline": "Ver cronología completa"
+  },
+  "cards": {
+    "timelineDesc": "140 años desde los conventillos hasta el escenario mundial",
+    "glossaryDesc": "Términos, conceptos y cultura de la milonga",
+    "orchestrasDesc": "Los Cuatro Grandes y las orquestas que construyeron la Época de Oro",
+    "peopleDesc": "Bailarines, cantantes, músicos y figuras culturales",
+    "venuesDesc": "Milongas de Buenos Aires, históricas y actuales",
+    "stylesDesc": "Del milonguero al nuevo — cómo evolucionó el baile"
+  },
+  "stats": {
+    "terms": "Términos",
+    "orchestras": "Orquestas",
+    "people": "Personas",
+    "venues": "Milongas",
+    "styles": "Estilos",
+    "eras": "Épocas",
+    "communityVerified": "CONOCIMIENTO VERIFICADO POR LA COMUNIDAD"
+  },
+  "footer": {
+    "description": "El estudio abierto del tango argentino — historia, música, personas, cultura",
+    "foundedBy": "Fundado por",
+    "aiAssisted": "Investigación asistida por IA · Curado por humanos",
+    "learnProcess": "Conoce cómo creamos contenido",
+    "copyright": "© 2026 Tangology.org"
+  },
+  "about": {
+    "title": "Acerca de Tangology",
+    "subtitle": "Una base de conocimiento comunitaria para el tango argentino",
+    "mission": "Nuestra Misión",
+    "founder": "El Fundador",
+    "howWeBuild": "Cómo Creamos Contenido",
+    "whyAI": "¿Por qué Asistido por IA?",
+    "foundError": "¿Encontraste un Error? ¿Sabes Más?",
+    "getInTouch": "Contáctanos"
+  },
+  "language": {
+    "en": "English",
+    "es": "Español"
+  }
+}
