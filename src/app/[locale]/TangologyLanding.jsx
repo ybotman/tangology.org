@@ -402,7 +402,7 @@ function Hero({ searchFocused, setSearchFocused }) {
             letterSpacing: "0.02em",
           }}
         >
-          The Study of Argentine Tango
+          A Curated Study of Argentine Tango
         </p>
         <p
           className="mb-10 sm:mb-14"
