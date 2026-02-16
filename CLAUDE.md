@@ -119,14 +119,36 @@ HANDOFF
 
 | Branch | Purpose | Your Permissions |
 |--------|---------|------------------|
-| `DEVL` | Active development | Autonomous - commit freely |
-| `main` | Production | NEVER push without approval |
+| `DEVL` | Active development (syncs to origin) | Autonomous - commit freely |
+| `PROD` | Production releases | NEVER push without approval |
+| Feature branches | Big new features | Create as needed, merge to DEVL |
 
 **Rules:**
 - Always work on `DEVL` unless directed otherwise
 - If you find yourself on a different branch at startup, ask before proceeding
 - Commit messages: `[area]: Brief description`
 - Examples: `[timeline]: Add epoca-de-oro era data`, `[fix]: Remove unused import`
+
+### Content Update Workflow
+
+Content updates happen frequently. Before starting work:
+
+```bash
+# 1. Pull latest from origin
+git pull origin DEVL
+
+# 2. Check for merge conflicts
+git status
+```
+
+When pushing content updates:
+```bash
+git add .
+git commit -m "[content]: Description of what was added/updated"
+git push origin DEVL
+```
+
+Vercel auto-deploys from DEVL (preview) and PROD (production).
 
 ---
 
