@@ -470,26 +470,53 @@ function Footer() {
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 mb-8">
-          {["About", "Timeline", "Glossary", "People", "Orchestras", "Contribute"].map((link) => (
+          {[
+            { label: "About", href: "/about" },
+            { label: "Timeline", href: "#" },
+            { label: "Glossary", href: "#" },
+            { label: "People", href: "#" },
+            { label: "Orchestras", href: "#" },
+            { label: "Contribute", href: "/about#process" },
+          ].map((link) => (
             <a
-              key={link}
-              href="#"
+              key={link.label}
+              href={link.href}
               className="no-underline transition-colors duration-200"
               style={{ fontFamily: "'Source Sans 3', sans-serif", color: "#6B6560", fontSize: "0.82rem" }}
               onMouseEnter={(e) => (e.target.style.color = "#C8A96E")}
               onMouseLeave={(e) => (e.target.style.color = "#6B6560")}
             >
-              {link}
+              {link.label}
             </a>
           ))}
         </div>
 
         <div className="mb-6" style={{ borderTop: "1px solid rgba(200,169,110,0.06)", paddingTop: "1.5rem" }}>
           <p style={{ fontFamily: "'Source Sans 3', sans-serif", color: "#4A4540", fontSize: "0.8rem", lineHeight: 1.6 }}>
-            Founded by Toby Balsley · Community-driven knowledge
+            Founded by{" "}
+            <a href="/about" className="no-underline transition-colors duration-200" style={{ color: "#6B6560" }}
+              onMouseEnter={(e) => (e.target.style.color = "#C8A96E")}
+              onMouseLeave={(e) => (e.target.style.color = "#6B6560")}>
+              Toby Balsley
+            </a>
+            {" "}·{" "}
+            <a href="https://hdtsllc.com" target="_blank" rel="noopener noreferrer" className="no-underline transition-colors duration-200" style={{ color: "#6B6560" }}
+              onMouseEnter={(e) => (e.target.style.color = "#C8A96E")}
+              onMouseLeave={(e) => (e.target.style.color = "#6B6560")}>
+              HDTS LLC
+            </a>
           </p>
-          <p style={{ fontFamily: "'Source Sans 3', sans-serif", color: "#3A3530", fontSize: "0.75rem", marginTop: "0.25rem" }}>
-            Corrections and contributions welcome
+          <p style={{ fontFamily: "'Source Sans 3', sans-serif", color: "#3A3530", fontSize: "0.75rem", marginTop: "0.5rem" }}>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: "0.35rem" }}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
+              </svg>
+              AI-assisted research · Human-curated · <a href="/about#process" className="no-underline" style={{ color: "#4A4540" }}
+                onMouseEnter={(e) => (e.target.style.color = "#C8A96E")}
+                onMouseLeave={(e) => (e.target.style.color = "#4A4540")}>
+                Learn how we build content
+              </a>
+            </span>
           </p>
         </div>
 
