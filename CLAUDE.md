@@ -57,11 +57,11 @@
 git branch --show-current
 
 # 2. Read your latest self-handoff
-LATEST_HANDOFF=$(ls -t /Users/tobybalsley/MyDocs/StaticSites/tagnology.org/docs/handoffs/sage/*.md 2>/dev/null | head -1)
+LATEST_HANDOFF=$(ls -t /Users/tobybalsley/MyDocs/StaticSites/tangology.org/docs/handoffs/sage/*.md 2>/dev/null | head -1)
 [ -n "$LATEST_HANDOFF" ] && cat "$LATEST_HANDOFF"
 
 # 3. Check for pending research documents
-ls -lt /Users/tobybalsley/MyDocs/StaticSites/tagnology.org/docs/inbox/*.md 2>/dev/null | head -5
+ls -lt /Users/tobybalsley/MyDocs/StaticSites/tangology.org/docs/inbox/*.md 2>/dev/null | head -5
 ```
 
 **Then report to user:**
@@ -79,9 +79,9 @@ ls -lt /Users/tobybalsley/MyDocs/StaticSites/tagnology.org/docs/inbox/*.md 2>/de
 Write a self-handoff file for your future self:
 
 ```bash
-mkdir -p /Users/tobybalsley/MyDocs/StaticSites/tagnology.org/docs/handoffs/sage
+mkdir -p /Users/tobybalsley/MyDocs/StaticSites/tangology.org/docs/handoffs/sage
 
-cat > /Users/tobybalsley/MyDocs/StaticSites/tagnology.org/docs/handoffs/sage/session_$(date +%Y-%m-%dT%H-%M).md <<'HANDOFF'
+cat > /Users/tobybalsley/MyDocs/StaticSites/tangology.org/docs/handoffs/sage/session_$(date +%Y-%m-%dT%H-%M).md <<'HANDOFF'
 # Session Handoff: Sage @ [TIMESTAMP]
 
 ## Current Status
@@ -333,7 +333,7 @@ Before marking `status: "populated"`:
 ## Folder Structure Reference
 
 ```
-tagnology.org/
+tangology.org/
 ├── CLAUDE.md                    <- This file
 ├── docs/
 │   ├── handoffs/sage/           <- Session handoffs
