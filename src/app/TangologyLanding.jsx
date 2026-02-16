@@ -28,6 +28,19 @@ const STATS = [
   { num: "6", label: "Eras" },
 ];
 
+const QUOTES = [
+  { text: "Tango is a sad thought that is danced.", author: "Enrique Santos Discépolo" },
+  { text: "The tango is the direct expression of something that poets have often tried to state in words: the belief that a fight may be a celebration.", author: "Jorge Luis Borges" },
+  { text: "To dance tango, you must listen to the heart of your partner.", author: "Carlos Gavito" },
+  { text: "Tango is not in the feet. It is in the heart.", author: "Traditional" },
+  { text: "The embrace is the first step. Everything else follows from there.", author: "Gustavo Naveira" },
+  { text: "In tango, we don't make mistakes. We make variations.", author: "Traditional" },
+  { text: "The best dancer is the one who makes his partner look like the best dancer.", author: "Traditional" },
+  { text: "Tango: three minutes of love.", author: "Traditional" },
+  { text: "You don't choose tango. Tango chooses you.", author: "Traditional" },
+  { text: "The music tells us what to do. We just listen.", author: "Pepito Avellaneda" },
+];
+
 function useInView(threshold = 0.15) {
   const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -129,6 +142,26 @@ function Header({ scrolled, onMenuToggle, menuOpen }) {
 }
 
 function Hero({ searchFocused, setSearchFocused }) {
+  const [quoteIndex, setQuoteIndex] = useState(0);
+  const [quoteFade, setQuoteFade] = useState(true);
+
+  useEffect(() => {
+    // Start with random quote
+    setQuoteIndex(Math.floor(Math.random() * QUOTES.length));
+
+    const interval = setInterval(() => {
+      setQuoteFade(false);
+      setTimeout(() => {
+        setQuoteIndex((prev) => (prev + 1) % QUOTES.length);
+        setQuoteFade(true);
+      }, 500);
+    }, 8000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentQuote = QUOTES[quoteIndex];
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden" style={{ backgroundColor: "#0D0D0D" }}>
       <div
@@ -205,6 +238,36 @@ function Hero({ searchFocused, setSearchFocused }) {
               onBlur={() => setSearchFocused(false)}
             />
           </div>
+        </div>
+
+        {/* Rotating Quote */}
+        <div
+          className="mt-10 sm:mt-12 transition-opacity duration-500"
+          style={{ opacity: quoteFade ? 1 : 0 }}
+        >
+          <p
+            style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              color: "#6B6560",
+              fontSize: "clamp(0.9rem, 1.8vw, 1.05rem)",
+              fontStyle: "italic",
+              lineHeight: 1.5,
+              maxWidth: "32rem",
+              margin: "0 auto",
+            }}
+          >
+            "{currentQuote.text}"
+          </p>
+          <p
+            className="mt-2"
+            style={{
+              fontFamily: "'Source Sans 3', sans-serif",
+              color: "#4A4540",
+              fontSize: "0.8rem",
+            }}
+          >
+            — {currentQuote.author}
+          </p>
         </div>
       </div>
 
