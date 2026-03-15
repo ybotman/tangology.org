@@ -95,5 +95,98 @@
   "language": {
     "en": "English",
     "es": "Español"
+  },
+  "glossary": {
+    "title": "Glosario",
+    "subtitle": "Vocabulario Esencial del Tango",
+    "searchPlaceholder": "Buscar términos...",
+    "showingResults": "Mostrando {count} de {total} términos",
+    "noResults": "No se encontraron términos con ese criterio.",
+    "clearFilters": "Limpiar filtros",
+    "alsoKnownAs": "También conocido como",
+    "related": "Relacionado",
+    "categories": {
+      "all": "Todas las Categorías",
+      "dance": "Baile",
+      "music": "Música",
+      "culture": "Cultura",
+      "history": "Historia"
+    }
+  },
+  "people": {
+    "title": "Personas",
+    "subtitle": "Bailarines, Músicos, Cantantes y Figuras Culturales",
+    "searchPlaceholder": "Buscar personas...",
+    "showingResults": "Mostrando {count} de {total} perfiles",
+    "noResults": "No se encontraron perfiles con ese criterio.",
+    "allTypes": "Todos los Tipos",
+    "allEras": "Todas las Épocas",
+    "types": {
+      "dancer": "Bailarín/a",
+      "musician": "Músico/a",
+      "singer": "Cantante",
+      "composer": "Compositor/a",
+      "teacher": "Maestro/a",
+      "organizer": "Organizador/a"
+    }
+  },
+  "orchestras": {
+    "title": "Orquestas",
+    "subtitle": "Las Orquestas de la Época de Oro que Construyeron el Tango",
+    "searchPlaceholder": "Buscar orquestas...",
+    "bigFour": "Los Cuatro Grandes",
+    "bigFourDesc": "Las cuatro orquestas que definieron el sonido de la Época de Oro",
+    "moreOrchestras": "Más Orquestas",
+    "activeYears": "Activa",
+    "style": "Estilo",
+    "notableWorks": "Obras Notables"
+  },
+  "venues": {
+    "title": "Milongas",
+    "subtitle": "Milongas de Buenos Aires — Históricas y Actuales",
+    "searchPlaceholder": "Buscar milongas...",
+    "showingResults": "Mostrando {count} de {total} milongas",
+    "noResults": "No se encontraron milongas con ese criterio.",
+    "allVenues": "Todas las Milongas",
+    "active": "Activas",
+    "historic": "Históricas",
+    "neighborhood": "Barrio",
+    "founded": "Fundada",
+    "mapComingSoon": "Mapa interactivo próximamente"
+  },
+  "styles": {
+    "title": "Estilos",
+    "subtitle": "Del Milonguero al Nuevo — Cómo Evolucionó el Baile",
+    "majorStyles": "Estilos Principales",
+    "otherStyles": "Otros Estilos e Influencias",
+    "characteristics": "Características",
+    "keyFigures": "Figuras Clave",
+    "origins": "Orígenes",
+    "expandDetails": "Ver detalles",
+    "collapseDetails": "Ocultar detalles"
+  },
+  "searchModal": {
+    "title": "Buscar en Tangology",
+    "placeholder": "Buscar {count} entradas...",
+    "noResults": "No se encontraron resultados para \"{query}\"",
+    "startTyping": "Empieza a escribir para buscar...",
+    "hint": "Busca orquestas, términos, personas, milongas, estilos y épocas",
+    "navigate": "navegar",
+    "select": "seleccionar",
+    "close": "cerrar",
+    "recentSearches": "Búsquedas Recientes",
+    "clearRecent": "Limpiar"
+  },
+  "common": {
+    "all": "Todos",
+    "showingOf": "Mostrando {count} de {total}",
+    "profiles": "perfiles",
+    "terms": "términos",
+    "loading": "Cargando...",
+    "error": "Algo salió mal",
+    "retry": "Intentar de nuevo",
+    "viewAll": "Ver todo",
+    "readMore": "Leer más",
+    "backTo": "Volver a {page}"
   }
 }

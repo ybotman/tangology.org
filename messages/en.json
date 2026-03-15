@@ -95,5 +95,98 @@
   "language": {
     "en": "English",
     "es": "Español"
+  },
+  "glossary": {
+    "title": "Glossary",
+    "subtitle": "Essential Tango Vocabulary",
+    "searchPlaceholder": "Search terms...",
+    "showingResults": "Showing {count} of {total} terms",
+    "noResults": "No terms found matching your criteria.",
+    "clearFilters": "Clear filters",
+    "alsoKnownAs": "Also known as",
+    "related": "Related",
+    "categories": {
+      "all": "All Categories",
+      "dance": "Dance",
+      "music": "Music",
+      "culture": "Culture",
+      "history": "History"
+    }
+  },
+  "people": {
+    "title": "People",
+    "subtitle": "Dancers, Musicians, Singers & Cultural Figures",
+    "searchPlaceholder": "Search people...",
+    "showingResults": "Showing {count} of {total} profiles",
+    "noResults": "No profiles found matching your criteria.",
+    "allTypes": "All Types",
+    "allEras": "All Eras",
+    "types": {
+      "dancer": "Dancer",
+      "musician": "Musician",
+      "singer": "Singer",
+      "composer": "Composer",
+      "teacher": "Teacher",
+      "organizer": "Organizer"
+    }
+  },
+  "orchestras": {
+    "title": "Orchestras",
+    "subtitle": "The Golden Age Ensembles That Built Tango",
+    "searchPlaceholder": "Search orchestras...",
+    "bigFour": "The Big Four",
+    "bigFourDesc": "The four orchestras that defined the Golden Age sound",
+    "moreOrchestras": "More Orchestras",
+    "activeYears": "Active",
+    "style": "Style",
+    "notableWorks": "Notable Works"
+  },
+  "venues": {
+    "title": "Venues",
+    "subtitle": "Buenos Aires Milongas — Historic and Living",
+    "searchPlaceholder": "Search venues...",
+    "showingResults": "Showing {count} of {total} venues",
+    "noResults": "No venues found matching your criteria.",
+    "allVenues": "All Venues",
+    "active": "Active",
+    "historic": "Historic",
+    "neighborhood": "Neighborhood",
+    "founded": "Founded",
+    "mapComingSoon": "Interactive map coming soon"
+  },
+  "styles": {
+    "title": "Styles",
+    "subtitle": "From Milonguero to Nuevo — How the Dance Evolved",
+    "majorStyles": "Major Styles",
+    "otherStyles": "Other Styles & Influences",
+    "characteristics": "Characteristics",
+    "keyFigures": "Key Figures",
+    "origins": "Origins",
+    "expandDetails": "Show details",
+    "collapseDetails": "Hide details"
+  },
+  "searchModal": {
+    "title": "Search Tangology",
+    "placeholder": "Search {count} entries...",
+    "noResults": "No results found for \"{query}\"",
+    "startTyping": "Start typing to search...",
+    "hint": "Search orchestras, terms, people, venues, styles, and eras",
+    "navigate": "navigate",
+    "select": "select",
+    "close": "close",
+    "recentSearches": "Recent Searches",
+    "clearRecent": "Clear"
+  },
+  "common": {
+    "all": "All",
+    "showingOf": "Showing {count} of {total}",
+    "profiles": "profiles",
+    "terms": "terms",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try again",
+    "viewAll": "View all",
+    "readMore": "Read more",
+    "backTo": "Back to {page}"
   }
 }
