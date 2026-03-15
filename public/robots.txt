@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://tangology.org
+
+# Sitemaps
+Sitemap: https://tangology.org/sitemap.xml

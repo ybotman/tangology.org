@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from "react";
+import { useParams } from "next/navigation";
+import { SearchModal, useSearchShortcut } from "@/components/ui/SearchModal";
 
 const ERAS = [
   { name: "La Guardia Vieja", subtitle: "The Old Guard", years: "1880–1920", color: "#6B8E5A" },
@@ -9,15 +11,22 @@ const ERAS = [
 ];
 
 const NAV_CARDS = [
-  { title: "Timeline", desc: "140 years from the conventillos to the world stage", count: "5 eras", href: "#" },
-  { title: "Glossary", desc: "Terms, concepts, and culture of the milonga", count: "87 terms", href: "#" },
-  { title: "Orchestras", desc: "The Big Four, and the ensembles that built the Golden Age", count: "23 profiles", href: "#" },
-  { title: "People", desc: "Dancers, singers, musicians, and cultural figures", count: "89 profiles", href: "#" },
-  { title: "Venues", desc: "Buenos Aires milongas, historic and living", count: "16 venues", href: "#" },
-  { title: "Styles", desc: "From milonguero to nuevo — how the dance evolved", count: "9 styles", href: "#" },
+  { title: "Timeline", desc: "140 years from the conventillos to the world stage", count: "5 eras", path: "/timeline" },
+  { title: "Glossary", desc: "Terms, concepts, and culture of the milonga", count: "96 terms", path: "/glossary" },
+  { title: "Orchestras", desc: "The Big Four, and the ensembles that built the Golden Age", count: "23 profiles", path: "/orchestras" },
+  { title: "People", desc: "Dancers, singers, musicians, and cultural figures", count: "33 profiles", path: "/people" },
+  { title: "Venues", desc: "Buenos Aires milongas, historic and living", count: "16 venues", path: "/venues" },
+  { title: "Styles", desc: "From milonguero to nuevo — how the dance evolved", count: "9 styles", path: "/styles" },
 ];
 
-const NAV_LINKS = ["Timeline", "Glossary", "Orchestras", "People", "Styles", "Venues"];
+const NAV_LINKS = [
+  { label: "Timeline", path: "/timeline" },
+  { label: "Glossary", path: "/glossary" },
+  { label: "Orchestras", path: "/orchestras" },
+  { label: "People", path: "/people" },
+  { label: "Styles", path: "/styles" },
+  { label: "Venues", path: "/venues" },
+];
 
 const STATS = [
   { num: "87", label: "Terms" },
@@ -173,7 +182,7 @@ function GrainOverlay() {
   );
 }
 
-function Header({ scrolled, onMenuToggle, menuOpen }) {
+function Header({ scrolled, onMenuToggle, menuOpen, onSearchClick, locale }) {
   return (
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
@@ -184,7 +193,7 @@ function Header({ scrolled, onMenuToggle, menuOpen }) {
       }}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14 sm:h-16">
-        <a href="#" className="flex items-center gap-1.5 no-underline">
+        <a href={`/${locale}`} className="flex items-center gap-1.5 no-underline">
           <span
             style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#C8A96E", letterSpacing: "0.18em", fontSize: "1.1rem", fontWeight: 700 }}
           >
@@ -195,17 +204,20 @@ function Header({ scrolled, onMenuToggle, menuOpen }) {
         <nav className="hidden md:flex items-center gap-6">
           {NAV_LINKS.map((link) => (
             <a
-              key={link}
-              href="#"
+              key={link.label}
+              href={`/${locale}${link.path}`}
               className="no-underline text-sm transition-colors duration-200"
               style={{ fontFamily: "'Source Sans 3', sans-serif", color: "#A89F94", fontWeight: 400 }}
               onMouseEnter={(e) => (e.target.style.color = "#F5F0E8")}
               onMouseLeave={(e) => (e.target.style.color = "#A89F94")}
             >
-              {link}
+              {link.label}
             </a>
           ))}
-          <button className="ml-2 p-1.5 rounded-full transition-colors duration-200" style={{ color: "#A89F94" }}
+          <button
+            className="ml-2 p-1.5 rounded-full transition-colors duration-200"
+            style={{ color: "#A89F94" }}
+            onClick={onSearchClick}
             onMouseEnter={(e) => (e.currentTarget.style.color = "#C8A96E")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "#A89F94")}
           >
@@ -234,8 +246,8 @@ function Header({ scrolled, onMenuToggle, menuOpen }) {
         <div className="md:hidden border-t" style={{ backgroundColor: "rgba(13,13,13,0.97)", borderColor: "rgba(200,169,110,0.1)" }}>
           <div className="px-6 py-4 flex flex-col gap-3">
             {NAV_LINKS.map((link) => (
-              <a key={link} href="#" className="no-underline py-1" style={{ fontFamily: "'Source Sans 3', sans-serif", color: "#A89F94", fontSize: "1rem" }}>
-                {link}
+              <a key={link.label} href={`/${locale}${link.path}`} className="no-underline py-1" style={{ fontFamily: "'Source Sans 3', sans-serif", color: "#A89F94", fontSize: "1rem" }}>
+                {link.label}
               </a>
             ))}
           </div>
@@ -347,9 +359,10 @@ function QuickAccessTabs() {
   );
 }
 
-function Hero({ searchFocused, setSearchFocused }) {
+function Hero({ onSearchClick }) {
   const [quoteIndex, setQuoteIndex] = useState(0);
   const [quoteFade, setQuoteFade] = useState(true);
+  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     // Start with random quote
@@ -417,34 +430,45 @@ function Hero({ searchFocused, setSearchFocused }) {
           HISTORY &nbsp;·&nbsp; MUSIC &nbsp;·&nbsp; PEOPLE &nbsp;·&nbsp; CULTURE
         </p>
 
-        <div
-          className="relative mx-auto w-full max-w-xl transition-all duration-300"
+        <button
+          onClick={onSearchClick}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          className="relative mx-auto w-full max-w-xl transition-all duration-300 text-left cursor-pointer"
           style={{
-            border: searchFocused ? "1px solid rgba(200,169,110,0.5)" : "1px solid rgba(200,169,110,0.18)",
+            border: hovered ? "1px solid rgba(200,169,110,0.5)" : "1px solid rgba(200,169,110,0.18)",
             borderRadius: "999px",
-            backgroundColor: searchFocused ? "rgba(30,27,24,0.9)" : "rgba(30,27,24,0.6)",
-            boxShadow: searchFocused ? "0 0 24px rgba(200,169,110,0.08)" : "none",
+            backgroundColor: hovered ? "rgba(30,27,24,0.9)" : "rgba(30,27,24,0.6)",
+            boxShadow: hovered ? "0 0 24px rgba(200,169,110,0.08)" : "none",
           }}
         >
           <div className="flex items-center px-5 py-3 sm:py-3.5">
-            <svg width="18" height="18" fill="none" stroke={searchFocused ? "#C8A96E" : "#6B6560"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" className="flex-shrink-0 transition-colors duration-200">
+            <svg width="18" height="18" fill="none" stroke={hovered ? "#C8A96E" : "#6B6560"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" className="flex-shrink-0 transition-colors duration-200">
               <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
-            <input
-              type="text"
-              placeholder="Search 161 entries — orchestras, terms, people, venues..."
-              className="flex-1 bg-transparent border-none outline-none ml-3 placeholder-current"
+            <span
+              className="flex-1 ml-3"
               style={{
                 fontFamily: "'Source Sans 3', sans-serif",
-                color: "#F5F0E8",
+                color: "#6B6560",
                 fontSize: "0.95rem",
-                "::placeholder": { color: "#6B6560" },
               }}
-              onFocus={() => setSearchFocused(true)}
-              onBlur={() => setSearchFocused(false)}
-            />
+            >
+              Search 161 entries — orchestras, terms, people, venues...
+            </span>
+            <kbd
+              className="hidden sm:inline-block px-2 py-0.5 rounded text-xs"
+              style={{
+                backgroundColor: "rgba(200,169,110,0.1)",
+                color: "#6B6560",
+                fontFamily: "'JetBrains Mono', monospace",
+                border: "1px solid rgba(200,169,110,0.15)",
+              }}
+            >
+              ⌘K
+            </kbd>
           </div>
-        </div>
+        </button>
 
         {/* Rotating Quote */}
         <div
@@ -487,11 +511,11 @@ function Hero({ searchFocused, setSearchFocused }) {
   );
 }
 
-function NavCard({ card, index, isVisible }) {
+function NavCard({ card, index, isVisible, locale }) {
   const [hovered, setHovered] = useState(false);
   return (
     <a
-      href={card.href}
+      href={`/${locale}${card.path}`}
       className="block no-underline transition-all duration-300"
       style={{
         backgroundColor: hovered ? "#2A2520" : "#1E1B18",
@@ -524,7 +548,7 @@ function NavCard({ card, index, isVisible }) {
   );
 }
 
-function NavGrid() {
+function NavGrid({ locale }) {
   const [ref, isVisible] = useInView(0.1);
   return (
     <section ref={ref} className="py-16 sm:py-24 px-4 sm:px-6" style={{ backgroundColor: "#0D0D0D" }}>
@@ -545,7 +569,7 @@ function NavGrid() {
         {/* Category Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
           {NAV_CARDS.map((card, i) => (
-            <NavCard key={card.title} card={card} index={i} isVisible={isVisible} />
+            <NavCard key={card.title} card={card} index={i} isVisible={isVisible} locale={locale} />
           ))}
         </div>
       </div>
@@ -621,7 +645,7 @@ function Spotlight() {
   );
 }
 
-function TimelinePreview() {
+function TimelinePreview({ locale }) {
   const [ref, isVisible] = useInView();
   return (
     <section ref={ref} className="py-16 sm:py-20 px-4 sm:px-6" style={{ backgroundColor: "#0D0D0D" }}>
@@ -634,7 +658,7 @@ function TimelinePreview() {
             <div className="hidden sm:block flex-1 h-px w-16" style={{ backgroundColor: "rgba(200,169,110,0.15)" }} />
           </div>
           <a
-            href="#"
+            href={`/${locale}/timeline`}
             className="hidden sm:inline-flex items-center gap-1.5 no-underline"
             style={{ fontFamily: "'Source Sans 3', sans-serif", color: "#C8A96E", fontSize: "0.85rem", fontWeight: 600 }}
           >
@@ -649,7 +673,7 @@ function TimelinePreview() {
           {ERAS.map((era, i) => (
             <a
               key={era.name}
-              href="#"
+              href={`/${locale}/timeline`}
               className="flex-shrink-0 no-underline rounded-lg p-4 sm:p-5 transition-all duration-500 group"
               style={{
                 backgroundColor: "#1E1B18",
@@ -685,7 +709,7 @@ function TimelinePreview() {
 
         <div className="sm:hidden text-center mt-6">
           <a
-            href="#"
+            href={`/${locale}/timeline`}
             className="inline-flex items-center gap-1.5 no-underline"
             style={{ fontFamily: "'Source Sans 3', sans-serif", color: "#C8A96E", fontSize: "0.85rem", fontWeight: 600 }}
           >
@@ -726,7 +750,16 @@ function StatsRibbon() {
   );
 }
 
-function Footer() {
+function Footer({ locale }) {
+  const FOOTER_LINKS = [
+    { label: "About", path: "/about" },
+    { label: "Timeline", path: "/timeline" },
+    { label: "Glossary", path: "/glossary" },
+    { label: "People", path: "/people" },
+    { label: "Orchestras", path: "/orchestras" },
+    { label: "Contribute", path: "/about#process" },
+  ];
+
   return (
     <footer className="py-12 sm:py-16 px-4 sm:px-6" style={{ backgroundColor: "#0A0908", borderTop: "1px solid rgba(200,169,110,0.06)" }}>
       <div className="max-w-4xl mx-auto text-center">
@@ -741,17 +774,10 @@ function Footer() {
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 mb-8">
-          {[
-            { label: "About", href: "/about" },
-            { label: "Timeline", href: "#" },
-            { label: "Glossary", href: "#" },
-            { label: "People", href: "#" },
-            { label: "Orchestras", href: "#" },
-            { label: "Contribute", href: "/about#process" },
-          ].map((link) => (
+          {FOOTER_LINKS.map((link) => (
             <a
               key={link.label}
-              href={link.href}
+              href={`/${locale}${link.path}`}
               className="no-underline transition-colors duration-200"
               style={{ fontFamily: "'Source Sans 3', sans-serif", color: "#6B6560", fontSize: "0.82rem" }}
               onMouseEnter={(e) => (e.target.style.color = "#C8A96E")}
@@ -765,7 +791,7 @@ function Footer() {
         <div className="mb-6" style={{ borderTop: "1px solid rgba(200,169,110,0.06)", paddingTop: "1.5rem" }}>
           <p style={{ fontFamily: "'Source Sans 3', sans-serif", color: "#4A4540", fontSize: "0.8rem", lineHeight: 1.6 }}>
             Founded by{" "}
-            <a href="/about" className="no-underline transition-colors duration-200" style={{ color: "#6B6560" }}
+            <a href={`/${locale}/about`} className="no-underline transition-colors duration-200" style={{ color: "#6B6560" }}
               onMouseEnter={(e) => (e.target.style.color = "#C8A96E")}
               onMouseLeave={(e) => (e.target.style.color = "#6B6560")}>
               Toby Balsley
@@ -782,7 +808,7 @@ function Footer() {
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
               </svg>
-              AI-assisted research · Human-curated · <a href="/about#process" className="no-underline" style={{ color: "#4A4540" }}
+              AI-assisted research · Human-curated · <a href={`/${locale}/about#process`} className="no-underline" style={{ color: "#4A4540" }}
                 onMouseEnter={(e) => (e.target.style.color = "#C8A96E")}
                 onMouseLeave={(e) => (e.target.style.color = "#4A4540")}>
                 Learn how we build content
@@ -818,15 +844,21 @@ function Footer() {
 }
 
 export default function TangologyLanding() {
+  const params = useParams();
+  const locale = params?.locale || "en";
+
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [searchFocused, setSearchFocused] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Cmd+K shortcut to open search
+  useSearchShortcut(() => setSearchOpen(true));
 
   return (
     <>
@@ -839,13 +871,26 @@ export default function TangologyLanding() {
         ::-webkit-scrollbar { display: none; }
       `}</style>
       <div style={{ backgroundColor: "#0D0D0D", minHeight: "100vh", color: "#F5F0E8" }}>
-        <Header scrolled={scrolled} onMenuToggle={() => setMenuOpen(!menuOpen)} menuOpen={menuOpen} />
-        <Hero searchFocused={searchFocused} setSearchFocused={setSearchFocused} />
-        <NavGrid />
+        <Header
+          scrolled={scrolled}
+          onMenuToggle={() => setMenuOpen(!menuOpen)}
+          menuOpen={menuOpen}
+          onSearchClick={() => setSearchOpen(true)}
+          locale={locale}
+        />
+        <Hero onSearchClick={() => setSearchOpen(true)} />
+        <NavGrid locale={locale} />
         <Spotlight />
-        <TimelinePreview />
+        <TimelinePreview locale={locale} />
         <StatsRibbon />
-        <Footer />
+        <Footer locale={locale} />
+
+        {/* Search Modal */}
+        <SearchModal
+          isOpen={searchOpen}
+          onClose={() => setSearchOpen(false)}
+          locale={locale}
+        />
       </div>
     </>
   );
