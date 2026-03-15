@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://tangology.org/en/about</loc><lastmod>2026-03-15T19:12:55.497Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tangology.org/es/about</loc><lastmod>2026-03-15T19:12:55.498Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tangology.org</loc><lastmod>2026-03-15T19:12:55.498Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tangology.org/en/styles</loc><lastmod>2026-03-15T19:12:55.498Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tangology.org/es/styles</loc><lastmod>2026-03-15T19:12:55.498Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tangology.org/en/venues</loc><lastmod>2026-03-15T19:12:55.498Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tangology.org/es/venues</loc><lastmod>2026-03-15T19:12:55.498Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tangology.org/en/glossary</loc><lastmod>2026-03-15T19:12:55.498Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tangology.org/es/glossary</loc><lastmod>2026-03-15T19:12:55.498Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tangology.org/en</loc><lastmod>2026-03-15T19:12:55.498Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tangology.org/es</loc><lastmod>2026-03-15T19:12:55.498Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tangology.org/en/orchestras</loc><lastmod>2026-03-15T19:12:55.498Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tangology.org/es/orchestras</loc><lastmod>2026-03-15T19:12:55.498Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tangology.org/en/timeline</loc><lastmod>2026-03-15T19:12:55.498Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tangology.org/es/timeline</loc><lastmod>2026-03-15T19:12:55.498Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tangology.org/en/people</loc><lastmod>2026-03-15T19:12:55.498Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://tangology.org/es/people</loc><lastmod>2026-03-15T19:12:55.498Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://tangology.org/en/glossary</loc><lastmod>2026-03-15T19:17:08.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://tangology.org/es/glossary</loc><lastmod>2026-03-15T19:17:08.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://tangology.org/en/styles</loc><lastmod>2026-03-15T19:17:08.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://tangology.org/es/styles</loc><lastmod>2026-03-15T19:17:08.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://tangology.org/en/timeline</loc><lastmod>2026-03-15T19:17:08.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://tangology.org/es/timeline</loc><lastmod>2026-03-15T19:17:08.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://tangology.org</loc><lastmod>2026-03-15T19:17:08.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://tangology.org/en/venues</loc><lastmod>2026-03-15T19:17:08.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://tangology.org/es/venues</loc><lastmod>2026-03-15T19:17:08.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://tangology.org/en</loc><lastmod>2026-03-15T19:17:08.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://tangology.org/es</loc><lastmod>2026-03-15T19:17:08.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://tangology.org/en/about</loc><lastmod>2026-03-15T19:17:08.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://tangology.org/es/about</loc><lastmod>2026-03-15T19:17:08.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://tangology.org/en/people</loc><lastmod>2026-03-15T19:17:08.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://tangology.org/es/people</loc><lastmod>2026-03-15T19:17:08.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://tangology.org/en/orchestras</loc><lastmod>2026-03-15T19:17:08.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://tangology.org/es/orchestras</loc><lastmod>2026-03-15T19:17:08.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
