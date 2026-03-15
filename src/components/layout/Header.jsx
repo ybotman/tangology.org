@@ -19,8 +19,9 @@ const NAV_LINKS = [
  * @param {function} onMenuToggle - Toggle mobile menu
  * @param {boolean} menuOpen - Mobile menu state
  * @param {string} locale - Current locale (en/es)
+ * @param {function} onSearchClick - Open search modal
  */
-export function Header({ scrolled = false, onMenuToggle, menuOpen = false, locale = "en" }) {
+export function Header({ scrolled = false, onMenuToggle, menuOpen = false, locale = "en", onSearchClick }) {
   const getLocalizedHref = (href) => `/${locale}${href}`;
 
   return (
@@ -67,11 +68,12 @@ export function Header({ scrolled = false, onMenuToggle, menuOpen = false, local
             </Link>
           ))}
           <button
-            className="ml-2 p-1.5 rounded-full transition-colors duration-200"
+            className="ml-2 p-1.5 rounded-full transition-colors duration-200 flex items-center gap-1.5"
             style={{ color: colors.text.mid }}
             onMouseEnter={(e) => (e.currentTarget.style.color = colors.accent.gold)}
             onMouseLeave={(e) => (e.currentTarget.style.color = colors.text.mid)}
-            aria-label="Search"
+            onClick={onSearchClick}
+            aria-label="Search (Cmd+K)"
           >
             <svg
               width="18"
@@ -86,6 +88,17 @@ export function Header({ scrolled = false, onMenuToggle, menuOpen = false, local
               <circle cx="11" cy="11" r="8" />
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
+            <kbd
+              className="hidden lg:inline-block px-1.5 py-0.5 rounded text-xs"
+              style={{
+                backgroundColor: colors.overlay.goldSubtle,
+                color: colors.text.muted,
+                fontFamily: fonts.mono,
+                fontSize: "0.65rem",
+              }}
+            >
+              ⌘K
+            </kbd>
           </button>
           <LanguageSwitcher />
         </nav>

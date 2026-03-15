@@ -3,10 +3,11 @@
 import { useState, useEffect } from "react";
 import { Header, SimpleHeader } from "./Header";
 import { Footer } from "./Footer";
+import { SearchModal, useSearchShortcut } from "@/components/ui/SearchModal";
 import { colors, globalStyles } from "@/lib/theme";
 
 /**
- * PageLayout - Shared wrapper with header, footer, and consistent styling
+ * PageLayout - Shared wrapper with header, footer, search modal, and consistent styling
  * @param {React.ReactNode} children - Page content
  * @param {string} locale - Current locale (en/es)
  * @param {boolean} simpleHeader - Use minimal header (for inner pages)
@@ -22,12 +23,17 @@ export function PageLayout({
 }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
+  // Handle scroll state
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Cmd+K keyboard shortcut
+  useSearchShortcut(() => setSearchOpen(true));
 
   return (
     <>
@@ -47,10 +53,18 @@ export function PageLayout({
             onMenuToggle={() => setMenuOpen(!menuOpen)}
             menuOpen={menuOpen}
             locale={locale}
+            onSearchClick={() => setSearchOpen(true)}
           />
         )}
         <main>{children}</main>
         <Footer locale={locale} />
+
+        {/* Global Search Modal */}
+        <SearchModal
+          isOpen={searchOpen}
+          onClose={() => setSearchOpen(false)}
+          locale={locale}
+        />
       </div>
     </>
   );
