@@ -5,9 +5,6 @@ import Link from "next/link";
 export default function AboutPage() {
   return (
     <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap');
-      `}</style>
       <div style={{ backgroundColor: "#0D0D0D", minHeight: "100vh", color: "#F5F0E8" }}>
         {/* Header */}
         <header className="fixed top-0 left-0 right-0 z-50" style={{ backgroundColor: "rgba(13,13,13,0.95)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(200,169,110,0.12)" }}>

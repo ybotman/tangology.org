@@ -36,11 +36,20 @@ function PersonCard({ person, locale }) {
 
   const typeConfig = TYPES[person.type] || { label: person.type, color: colors.text.muted };
 
-  // Parse dates
-  const lifespan = person.born
-    ? person.died
-      ? `${person.born.split("-")[0]}–${person.died.split("-")[0]}`
-      : `b. ${person.born.split("-")[0]}`
+  // Parse dates - handle both string dates "1970-09-21" and year numbers 1963
+  const getYear = (value) => {
+    if (!value) return null;
+    if (typeof value === "number") return value;
+    if (typeof value === "string") return value.split("-")[0];
+    return null;
+  };
+
+  const bornYear = getYear(person.born);
+  const diedYear = getYear(person.died);
+  const lifespan = bornYear
+    ? diedYear
+      ? `${bornYear}–${diedYear}`
+      : `b. ${bornYear}`
     : "";
 
   // Get first tag as subtitle

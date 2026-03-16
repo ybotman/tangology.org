@@ -178,7 +178,6 @@ export default function TimelinePage() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap');
         .timeline-scroll::-webkit-scrollbar { height: 8px; }
         .timeline-scroll::-webkit-scrollbar-track { background: #1E1B18; border-radius: 4px; }
         .timeline-scroll::-webkit-scrollbar-thumb { background: rgba(200,169,110,0.3); border-radius: 4px; }
