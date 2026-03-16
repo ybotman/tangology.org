@@ -37,7 +37,7 @@ export default function PaperPage() {
       }
 
       setLoading(true);
-      const result = await loadPaper(category, paperSlug);
+      const result = await loadPaper(category, paperSlug, { locale, autoLink: true });
 
       if (result.error) {
         setError(result.error);

@@ -1,4 +1,5 @@
 import { parseFrontmatter } from "./parseFrontmatter";
+import { autoLinkContent } from "../content/autoLinker";
 
 /**
  * Load a paper from the public tango-papers directory
@@ -6,9 +7,13 @@ import { parseFrontmatter } from "./parseFrontmatter";
  *
  * @param {string} category - Paper category (argentina, people, orchestras, etc.)
  * @param {string} slug - Paper slug (epoca-de-oro, carlos-gardel, etc.)
+ * @param {Object} options - Loading options
+ * @param {string} options.locale - Locale for links (default: "en")
+ * @param {boolean} options.autoLink - Whether to auto-link terms (default: true)
  * @returns {Promise<{ frontmatter: object, content: string, error?: string }>}
  */
-export async function loadPaper(category, slug) {
+export async function loadPaper(category, slug, options = {}) {
+  const { locale = "en", autoLink = true } = options;
   const path = `/tango-papers/${category}/${slug}.md`;
 
   try {
@@ -31,9 +36,20 @@ export async function loadPaper(category, slug) {
     const rawContent = await response.text();
     const { frontmatter, content } = parseFrontmatter(rawContent);
 
+    // Auto-link glossary terms, people, and orchestras
+    const linkedContent = autoLink
+      ? autoLinkContent(content, locale, {
+          linkGlossary: true,
+          linkPeople: true,
+          linkOrchestras: true,
+          linkEras: true,
+          maxLinksPerTerm: 1, // Only link first occurrence
+        })
+      : content;
+
     return {
       frontmatter,
-      content,
+      content: linkedContent,
       path,
     };
   } catch (error) {
