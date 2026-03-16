@@ -77,20 +77,20 @@ timelineCategories.forEach((category) => {
 // Display order for timeline columns
 const categoryOrder = ["argentina", "orchestras", "dancers", "europe", "usa"];
 
-// Category colors - tangology gold palette
+// Category colors - vibrant and distinct
 const CATEGORY_COLORS = {
-  argentina: "#8B6914",
-  orchestras: "#6B4423",
-  dancers: "#8B2E3B",
-  europe: "#2E5B8B",
-  usa: "#4A6741",
+  argentina: "#D4A84B",  // Bright gold
+  orchestras: "#C85A38", // Warm terracotta
+  dancers: "#C93B5C",    // Vibrant rose
+  europe: "#4A90D9",     // Bright blue
+  usa: "#5FAD56",        // Forest green
 };
 
-// Status colors - tangology style
+// Status colors - bold and visible
 const STATUS_CONFIG = {
-  populated: { bg: "rgba(200,169,110,0.15)", border: "#C8A96E" },
-  partial: { bg: "rgba(168,159,148,0.15)", border: "#A89F94" },
-  placeholder: { bg: "rgba(107,101,96,0.1)", border: "#4A4540" },
+  populated: { bg: "rgba(200,169,110,0.25)", border: "#D4A84B" },
+  partial: { bg: "rgba(180,160,140,0.2)", border: "#B8A080" },
+  placeholder: { bg: "rgba(120,110,100,0.15)", border: "#6B6560" },
 };
 
 function EraTooltip({ era, visible, position }) {
@@ -213,6 +213,19 @@ export default function TimelinePage() {
               TANGOLOGY
             </Link>
             <div className="flex items-center gap-4">
+              {/* Key Events link */}
+              <Link
+                href={`/${locale}/events`}
+                className="no-underline px-3 py-1.5 rounded-full text-xs transition-colors"
+                style={{
+                  fontFamily: "'Source Sans 3', sans-serif",
+                  border: "1px solid rgba(200,169,110,0.3)",
+                  backgroundColor: "rgba(200,169,110,0.1)",
+                  color: "#C8A96E",
+                }}
+              >
+                Key Events
+              </Link>
               {/* View toggle */}
               <div className="flex rounded-full overflow-hidden" style={{ border: "1px solid rgba(200,169,110,0.2)" }}>
                 <button
