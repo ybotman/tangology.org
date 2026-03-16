@@ -189,35 +189,77 @@ export default function EventsPage() {
       // Add custom styles for dark theme
       const style = document.createElement("style");
       style.textContent = `
+        /* NUCLEAR OPTION: Force dark on ALL timeline elements */
+        .tl-timeline,
+        .tl-timeline *,
+        .tl-timeline *::before,
+        .tl-timeline *::after {
+          background-color: transparent !important;
+        }
+
         /* Base timeline container */
         .tl-timeline {
           background-color: #1A1714 !important;
           font-family: 'Source Sans 3', sans-serif !important;
         }
 
-        /* Story slider - the main content area (FIX WHITE BACKGROUND) */
+        /* Story slider - the main content area */
         .tl-storyslider {
           background-color: #1A1714 !important;
+          background: #1A1714 !important;
         }
         .tl-slider-container-mask {
           background-color: #1A1714 !important;
+          background: #1A1714 !important;
         }
         .tl-slider-background {
           background-color: #1A1714 !important;
+          background: #1A1714 !important;
+        }
+        .tl-slider-item-container {
+          background-color: #1A1714 !important;
+          background: #1A1714 !important;
         }
 
         /* Individual slides */
         .tl-slide {
           background-color: #1A1714 !important;
+          background: #1A1714 !important;
         }
         .tl-slide-content-container {
           background-color: #1A1714 !important;
+          background: #1A1714 !important;
         }
         .tl-slide-content {
           background-color: #1A1714 !important;
+          background: #1A1714 !important;
         }
         .tl-slide-scrollable-container {
           background-color: #1A1714 !important;
+          background: #1A1714 !important;
+        }
+        .tl-slide-scrollable {
+          background-color: #1A1714 !important;
+          background: #1A1714 !important;
+        }
+
+        /* Media container (can have white bg) */
+        .tl-media-content-container {
+          background-color: #1A1714 !important;
+          background: #1A1714 !important;
+        }
+        .tl-media {
+          background-color: #1A1714 !important;
+          background: #1A1714 !important;
+        }
+        .tl-media-image {
+          background-color: #1A1714 !important;
+        }
+
+        /* Text container */
+        .tl-text-content-container {
+          background-color: #1A1714 !important;
+          background: #1A1714 !important;
         }
 
         /* Headlines - main title in slides (FIX HARD TO READ TEXT) */
@@ -257,18 +299,34 @@ export default function EventsPage() {
           border-color: #C8A96E !important;
         }
 
-        /* Timeline navigation bar */
+        /* Timeline navigation bar - AGGRESSIVE */
         .tl-timenav {
           background-color: #0D0D0D !important;
+          background: #0D0D0D !important;
         }
         .tl-timenav-container {
           background-color: #1A1714 !important;
+          background: #1A1714 !important;
+        }
+        .tl-timenav-slider {
+          background-color: #1A1714 !important;
+          background: #1A1714 !important;
+        }
+        .tl-timenav-slider-background {
+          background-color: #1A1714 !important;
+          background: #1A1714 !important;
         }
         .tl-timeaxis {
           background-color: #1A1714 !important;
+          background: #1A1714 !important;
         }
         .tl-timeaxis-background {
           background-color: #1A1714 !important;
+          background: #1A1714 !important;
+        }
+        .tl-timeaxis-content-container {
+          background-color: #1A1714 !important;
+          background: #1A1714 !important;
         }
         .tl-timeaxis-tick {
           border-color: rgba(200,169,110,0.2) !important;
@@ -276,6 +334,13 @@ export default function EventsPage() {
         .tl-timeaxis-tick-text span {
           color: #C8A96E !important;
           font-family: 'JetBrains Mono', monospace !important;
+        }
+        .tl-timemarker-timespan {
+          background-color: rgba(200,169,110,0.15) !important;
+        }
+        .tl-timegroup-container {
+          background-color: #1A1714 !important;
+          background: #1A1714 !important;
         }
 
         /* Navigation arrows */
@@ -309,9 +374,11 @@ export default function EventsPage() {
         /* Era bands */
         .tl-timeera {
           background-color: rgba(200,169,110,0.08) !important;
+          background: rgba(200,169,110,0.08) !important;
         }
         .tl-timeera-content-container {
           background-color: transparent !important;
+          background: transparent !important;
         }
         .tl-timeera-content-container .tl-timeera-text h2.tl-headline {
           color: #C8A96E !important;
@@ -323,6 +390,38 @@ export default function EventsPage() {
         /* Scroll hint */
         .tl-scroll-right, .tl-scroll-left {
           background: linear-gradient(to right, transparent, #1A1714) !important;
+        }
+
+        /* CATCH-ALL: Any remaining white backgrounds */
+        [class*="tl-"] {
+          background-color: transparent !important;
+        }
+
+        /* Specific containers that need solid dark bg */
+        .tl-timeline,
+        .tl-storyslider,
+        .tl-timenav,
+        .tl-slide,
+        .tl-timeaxis {
+          background-color: #1A1714 !important;
+          background: #1A1714 !important;
+        }
+        .tl-timenav {
+          background-color: #0D0D0D !important;
+          background: #0D0D0D !important;
+        }
+
+        /* Attribution link */
+        .tl-attribution {
+          background-color: transparent !important;
+        }
+        .tl-attribution a {
+          color: #6B5D4D !important;
+        }
+
+        /* Animate in elements */
+        .tl-animate {
+          background-color: transparent !important;
         }
       `;
       document.head.appendChild(style);
