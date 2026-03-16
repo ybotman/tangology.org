@@ -189,21 +189,75 @@ export default function EventsPage() {
       // Add custom styles for dark theme
       const style = document.createElement("style");
       style.textContent = `
+        /* Base timeline container */
         .tl-timeline {
           background-color: #1A1714 !important;
           font-family: 'Source Sans 3', sans-serif !important;
         }
+
+        /* Story slider - the main content area (FIX WHITE BACKGROUND) */
+        .tl-storyslider {
+          background-color: #1A1714 !important;
+        }
+        .tl-slider-container-mask {
+          background-color: #1A1714 !important;
+        }
+        .tl-slider-background {
+          background-color: #1A1714 !important;
+        }
+
+        /* Individual slides */
+        .tl-slide {
+          background-color: #1A1714 !important;
+        }
+        .tl-slide-content-container {
+          background-color: #1A1714 !important;
+        }
+        .tl-slide-content {
+          background-color: #1A1714 !important;
+        }
+        .tl-slide-scrollable-container {
+          background-color: #1A1714 !important;
+        }
+
+        /* Headlines - main title in slides (FIX HARD TO READ TEXT) */
+        .tl-headline {
+          color: #C8A96E !important;
+          font-family: 'Playfair Display', Georgia, serif !important;
+        }
+        .tl-headline-date {
+          color: #D4B896 !important;
+          font-family: 'JetBrains Mono', monospace !important;
+        }
+
+        /* Text content in slides */
+        .tl-text p {
+          color: #D4CCC0 !important;
+          line-height: 1.7 !important;
+        }
+        .tl-text em {
+          color: #C8A96E !important;
+        }
+
+        /* Timemarkers (the boxes on the timeline) */
         .tl-timemarker-content-container {
-          background-color: #1E1B18 !important;
-          border: 1px solid rgba(200,169,110,0.2) !important;
+          background-color: #2A2520 !important;
+          border: 1px solid rgba(200,169,110,0.3) !important;
         }
         .tl-timemarker-content-container .tl-timemarker-content .tl-timemarker-text h2.tl-headline {
           color: #F5F0E8 !important;
           font-family: 'Playfair Display', Georgia, serif !important;
+          font-size: 0.85rem !important;
         }
         .tl-timemarker-content-container .tl-timemarker-content .tl-timemarker-text p {
           color: #A89F94 !important;
         }
+        .tl-timemarker.tl-timemarker-active .tl-timemarker-content-container {
+          background-color: #3A3530 !important;
+          border-color: #C8A96E !important;
+        }
+
+        /* Timeline navigation bar */
         .tl-timenav {
           background-color: #0D0D0D !important;
         }
@@ -213,6 +267,9 @@ export default function EventsPage() {
         .tl-timeaxis {
           background-color: #1A1714 !important;
         }
+        .tl-timeaxis-background {
+          background-color: #1A1714 !important;
+        }
         .tl-timeaxis-tick {
           border-color: rgba(200,169,110,0.2) !important;
         }
@@ -220,33 +277,52 @@ export default function EventsPage() {
           color: #C8A96E !important;
           font-family: 'JetBrains Mono', monospace !important;
         }
+
+        /* Navigation arrows */
         .tl-slidenav-icon {
           color: #C8A96E !important;
         }
-        .tl-slide-content {
-          background-color: #1A1714 !important;
-        }
-        .tl-slide .tl-slide-content-container .tl-slide-content .tl-content .tl-headline {
+        .tl-slidenav-icon::before {
           color: #C8A96E !important;
-          font-family: 'Playfair Display', Georgia, serif !important;
         }
-        .tl-slide .tl-slide-content-container .tl-slide-content .tl-content .tl-text p {
+        .tl-slidenav-title {
           color: #A89F94 !important;
         }
+        .tl-slidenav-description {
+          color: #8A8178 !important;
+        }
+
+        /* Menubar */
         .tl-menubar {
           background-color: #1E1B18 !important;
         }
+        .tl-menubar-button {
+          color: #C8A96E !important;
+        }
+
+        /* Marker lines */
         .tl-timemarker .tl-timemarker-line-left,
         .tl-timemarker .tl-timemarker-line-right {
           background-color: rgba(200,169,110,0.3) !important;
         }
+
+        /* Era bands */
         .tl-timeera {
-          background-color: rgba(200,169,110,0.05) !important;
+          background-color: rgba(200,169,110,0.08) !important;
+        }
+        .tl-timeera-content-container {
+          background-color: transparent !important;
         }
         .tl-timeera-content-container .tl-timeera-text h2.tl-headline {
           color: #C8A96E !important;
           font-family: 'Source Sans 3', sans-serif !important;
           font-size: 0.7rem !important;
+          text-shadow: 0 1px 2px rgba(0,0,0,0.5) !important;
+        }
+
+        /* Scroll hint */
+        .tl-scroll-right, .tl-scroll-left {
+          background: linear-gradient(to right, transparent, #1A1714) !important;
         }
       `;
       document.head.appendChild(style);
